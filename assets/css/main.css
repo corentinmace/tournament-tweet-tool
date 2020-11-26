@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #202020 !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+p,
+h2 {
+    color: white !important;
+}
+
+hr {
+    background-color: white !important;
+}

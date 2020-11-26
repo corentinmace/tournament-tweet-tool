@@ -1,0 +1,27 @@
+{
+    "name": "linkcord-tweet-tool",
+    "version": "1.0.0",
+    "description": "Linkcord Tweet Tool for Tournament using ElectronJS and Twit.",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/corentinmace/linkcord-tweet-tool.git"
+    },
+    "author": "Corentin MACE",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/corentinmace/linkcord-tweet-tool/issues"
+    },
+    "homepage": "https://github.com/corentinmace/linkcord-tweet-tool#readme",
+    "devDependencies": {
+        "electron": "^11.0.3"
+    },
+    "dependencies": {
+        "jquery": "^3.5.1",
+        "twit": "^2.2.11"
+    }
+}
