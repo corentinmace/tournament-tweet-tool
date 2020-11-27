@@ -22,3 +22,11 @@ h2 {
 hr {
     background-color: white !important;
 }
+
+.ok {
+    color: lightgreen !important;
+}
+
+.error {
+    color: red !important;
+}

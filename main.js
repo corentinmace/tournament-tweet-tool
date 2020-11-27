@@ -5,7 +5,7 @@ function createWindow() {
         titleBarStyle: 'show',
         icon: 'assets/img/icon.png',
         width: 400,
-        height: 700,
+        height: 715,
         resizable: false,
         alwaysOnTop: true,
 

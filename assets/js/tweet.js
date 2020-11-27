@@ -1,6 +1,7 @@
 var Twit = require('twit')
 var fs = require('fs');
-
+const { send } = require('process');
+let sendResponse = document.getElementById("response");
 
 var T = new Twit({
     consumer_key: "ZFqcvm0F1IDBBub0gxLs1KKbj",
@@ -23,7 +24,37 @@ function getData() {
     console.log(round);
     console.log(twitch);
 
-    T.post('statuses/update', { status: `${round} : @${player_1} vs @${player_2} \n https://twitch.tv/${twitch}` }, function(err, data, response) {
-        console.log(data);
-    })
+    if (player_1 === "" || player_2 === "" || round === "" || twitch === "") {
+        console.log("Au moins un champ non rempli");
+        sendResponse.innerHTML = `Error : Merci de remplir toutes les informations`;
+        sendResponse.classList.add("error");
+        setTimeout(function()  {
+            sendResponse.innerHTML = "";
+            sendResponse.classList.remove("error")
+        }, 5000);
+    } else {
+        console.log("tout est ok");
+        T.post('statuses/update', { status: `${round} : @${player_1} vs @${player_2} \n https://twitch.tv/${twitch}` }, function(err, data, response) {
+            console.log(err);
+            console.log(data);
+
+            if (err !== undefined) {
+                sendResponse.innerHTML = `${err}`;
+                sendResponse.classList.add("error");
+                setTimeout(function()  {
+                    sendResponse.innerHTML = "";
+                    sendResponse.classList.remove("error")
+                }, 5000);
+            } else {
+                sendResponse.innerHTML = "Votre Tweet à bien été envoyé !";
+                sendResponse.classList.add("ok");
+                setTimeout(function()  {
+                    sendResponse.innerHTML = "";
+                    sendResponse.classList.remove("ok");
+                }, 5000);
+            }
+        })
+    }
+
+
 }
