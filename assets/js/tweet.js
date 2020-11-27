@@ -61,7 +61,7 @@ function getData() {
                     sendResponse.classList.remove("error")
                 }, 5000);
             } else {
-                sendResponse.innerHTML = "Votre Tweet à bien été envoyé !";
+                sendResponse.innerHTML = "Votre Tweet a bien été envoyé !";
                 sendResponse.classList.add("ok");
                 setTimeout(function()  {
                     sendResponse.innerHTML = "";
