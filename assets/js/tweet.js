@@ -16,13 +16,28 @@ var T = new Twit({
 function getData() {
     let player_1 = document.getElementById('player_1').value;
     let player_2 = document.getElementById('player_2').value;
+    let player_1_checkbox = document.getElementById('player_1_checkbox');
+    let player_2_checkbox = document.getElementById('player_2_checkbox');
+    let player_1_has_twitter = "";
+    let player_2_has_twitter = "";
     let round = document.getElementById('round').value;
     let twitch = document.getElementById('twitch').value;
+
+    if (player_1_checkbox.checked) {
+        player_1_has_twitter = "@";
+    }
+
+    if (player_2_checkbox.checked) {
+        player_2_has_twitter = "@";
+    }
 
     console.log(player_1);
     console.log(player_2);
     console.log(round);
     console.log(twitch);
+    console.log(player_1_has_twitter);
+    console.log(player_2_has_twitter);
+
 
     if (player_1 === "" || player_2 === "" || round === "" || twitch === "") {
         console.log("Au moins un champ non rempli");
@@ -34,7 +49,7 @@ function getData() {
         }, 5000);
     } else {
         console.log("tout est ok");
-        T.post('statuses/update', { status: `${round} : @${player_1} vs @${player_2} \n https://twitch.tv/${twitch}` }, function(err, data, response) {
+        T.post('statuses/update', { status: `${round} : ${player_1_has_twitter}${player_1} vs ${player_2_has_twitter}${player_2} \n https://twitch.tv/${twitch}` }, function(err, data, response) {
             console.log(err);
             console.log(data);
 
