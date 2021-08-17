@@ -1,1 +1,1 @@
-# linkcord-tweet-tool
+# tournament-tweet-tool
