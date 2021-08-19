@@ -1,13 +1,18 @@
-var Twit = require('twit')
-var fs = require('fs');
+const Twit = require('twit')
+const fs = require('fs');
 const { send } = require('process');
 let sendResponse = document.getElementById("response");
 
+let rawtokkens = fs.readFileSync('tokens.json');
+let tokens_file = JSON.parse(rawtokkens);
+
+
+
 var T = new Twit({
-    consumer_key: "ZFqcvm0F1IDBBub0gxLs1KKbj",
-    consumer_secret: "PaPWTsKqFuJt2wi5BNS3VaLMH04q9nPn1dEc9Jxa6MgWGKFrle",
-    access_token: "2596094331-KEFlHMk3xhwlGy6V6gFCxwYIvPMS82EkbBDas4s",
-    access_token_secret: "SAUBZbclIRBKLSMxY5OugCj5GTK8UYRHnOJgbTONsTXpf",
+    consumer_key: tokens_file.consumer_key,
+    consumer_secret: tokens_file.consumer_secret,
+    access_token: tokens_file.access_token,
+    access_token_secret: tokens_file.access_token_secret,
     timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
     strictSSL: true, // optional - requires SSL certificates to be valid.
 })
@@ -41,7 +46,7 @@ function getData() {
 
     if (player_1 === "" || player_2 === "" || round === "" || twitch === "") {
         console.log("Au moins un champ non rempli");
-        sendResponse.innerHTML = `Error : Merci de remplir toutes les informations`;
+        sendResponse.innerHTML = `Error : Something is missing !`;
         sendResponse.classList.add("error");
         setTimeout(function()  {
             sendResponse.innerHTML = "";
@@ -61,7 +66,7 @@ function getData() {
                     sendResponse.classList.remove("error")
                 }, 5000);
             } else {
-                sendResponse.innerHTML = "Votre Tweet a bien été envoyé !";
+                sendResponse.innerHTML = "Your tweet has been sent !";
                 sendResponse.classList.add("ok");
                 setTimeout(function()  {
                     sendResponse.innerHTML = "";
